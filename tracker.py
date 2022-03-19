@@ -32,10 +32,11 @@ could be replaced with PostgreSQL or Pandas or straight python lists
 '''
 
 #from transactions import Transaction
+import transactions
 from category import Category
 import sys
 
-#transactions = Transaction('tracker.db')
+transact = transactions('tracker.db')
 category = Category('tracker.db')
 
 
@@ -78,6 +79,12 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
+    #part 10: summarize transactions by category
+    elif choice == '10':
+        print(transactions.summarize())
+    #part 11: print menu
+    elif choice == '11':
+        print(menu)
     else:
         print("choice",choice,"not yet implemented")
 
