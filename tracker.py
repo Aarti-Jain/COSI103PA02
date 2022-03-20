@@ -31,12 +31,11 @@ could be replaced with PostgreSQL or Pandas or straight python lists
 
 '''
 
-#from transactions import Transaction
-import transactions
+from transactions import Transactions
 from category import Category
 import sys
 
-transact = transactions('tracker.db')
+transact = Transactions('tracker.db')
 category = Category('tracker.db')
 
 
@@ -57,9 +56,6 @@ menu = '''
 11. print this menu
 '''
 
-
-
-
 def process_choice(choice):
 
     if choice=='0':
@@ -79,9 +75,23 @@ def process_choice(choice):
         desc = input("new category description: ")
         cat = {'name':name, 'desc':desc}
         category.update(rowid,cat)
+
+    #part 4: show transactions
+    elif choice=='4':
+        trans = transact.select_all()
+        print_transactions(trans)
+    #part 5: add transaction
+    elif choice=='5':
+        amt = input("transaction amount: ")
+        transCat = input("transaction category: ")
+        date =  input("transaction date: ")
+        transDesc =  input("transaction description: ")
+        trans = {'amount':amt, 'category':transCat, 'date':date, 'desc':transDesc}
+        transact.add(trans)
+        
     #part 10: summarize transactions by category
     elif choice == '10':
-        print(transactions.summarize())
+        print(transact.summarize())
     #part 11: print menu
     elif choice == '11':
         print(menu)
