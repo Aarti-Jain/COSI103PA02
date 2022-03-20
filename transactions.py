@@ -33,8 +33,8 @@ class Transactions():
 
     #Part 5: To add transactions 
     def add(self,item): 
-        ''' add a category to the categories table.
-            this returns the rowid of the inserted element
+        ''' add a transaction to the transactions table.
+            this returns the item_number of the inserted element
         '''
         con= sqlite3.connect(self.fileName)
         cur = con.cursor()
