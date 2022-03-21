@@ -26,7 +26,7 @@ In place of SQL queries, we will have method calls.
 
 This app will store the data in a SQLite database ~/tracker.db
 
-Note the actual implementation of the ORM is hidden and so it 
+Note the actual implementation of the ORM is hidden and so it
 could be replaced with PostgreSQL or Pandas or straight python lists
 
 '''
@@ -57,7 +57,7 @@ menu = '''
 '''
 
 def process_choice(choice):
-
+    '''TO DO: write up docstring'''
     if choice=='0':
         return
 
@@ -95,7 +95,7 @@ def process_choice(choice):
 
     #part 6: delete transaction
     elif choice =='6':
-        rowid = input("Which id do you want to delete?") 
+        rowid = input("Which id do you want to delete?")
         transact.delete(rowid)
 
     #part 8: summarize transactions by month - Elizabeth Diener
@@ -120,7 +120,7 @@ def process_choice(choice):
         print("choice",choice,"not yet implemented")
 
     choice = input("> ")
-    return(choice)
+    return choice
 
 
 def toplevel():
@@ -147,7 +147,7 @@ def print_transactions(items):
         'item #','amount','category','date','description'))
     print('-'*40)
     for item in items:
-        values = tuple(item.values()) 
+        values = tuple(item.values())
         print("%-10s %-10d %-10s %-10d %-30s"%values)
 
 def print_category(cat):
@@ -163,4 +163,3 @@ def print_categories(cats):
 # here is the main call!
 
 toplevel()
-
