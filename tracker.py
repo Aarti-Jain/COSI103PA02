@@ -30,10 +30,10 @@ Note the actual implementation of the ORM is hidden and so it
 could be replaced with PostgreSQL or Pandas or straight python lists
 
 '''
-
+import sys
 from transactions import Transactions
 from category import Category
-import sys
+
 
 transact = Transactions('tracker.db')
 category = Category('tracker.db')
