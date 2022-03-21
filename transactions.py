@@ -62,7 +62,7 @@ class Transactions():
     def sum_date(self):
         con = sqlite3.connect(self.fileName)
         cur = con.cursor()
-        return cur.execute("SELECT * from transactions ORDER BY date")
+        return cur.execute("SELECT * FROM transactions ORDER BY date")
    #Part 10: Summarize transactions by category
     def summarize(self):
         con= sqlite3.connect(self.fileName)
