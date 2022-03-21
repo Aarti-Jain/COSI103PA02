@@ -58,7 +58,11 @@ class Transactions():
         cur.execute("DELETE FROM transactions WHERE rowid=(?)", (rowid,))
         con.commit()
         con.close()
-
+    #Part 7: Summarize transactions by date
+    def sum_date(self):
+        con = sqlite3.connect(self.fileName)
+        cur = con.cursor()
+        return cur.execute("SELECT * from transactions ORDER BY date")
    #Part 10: Summarize transactions by category
     def summarize(self):
         con= sqlite3.connect(self.fileName)
