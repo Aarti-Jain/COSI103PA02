@@ -60,14 +60,17 @@ def process_choice(choice):
 
     if choice=='0':
         return
+
     elif choice=='1':
         cats = category.select_all()
         print_categories(cats)
+
     elif choice=='2':
         name = input("category name: ")
         desc = input("category description: ")
         cat = {'name':name, 'desc':desc}
         category.add(cat)
+
     elif choice=='3':
         print("modifying category")
         rowid = int(input("rowid: "))
@@ -80,6 +83,7 @@ def process_choice(choice):
     elif choice=='4':
         trans = transact.select_all()
         print_transactions(trans)
+
     #part 5: add transaction
     elif choice=='5':
         amt = input("transaction amount: ")
@@ -88,16 +92,30 @@ def process_choice(choice):
         transDesc =  input("transaction description: ")
         trans = {'amount':amt, 'category':transCat, 'date':date, 'desc':transDesc}
         transact.add(trans)
+
     #part 6: delete transaction
     elif choice =='6':
         rowid = input("Which id do you want to delete?") 
-        transact.delete(rowid)  
+        transact.delete(rowid)
+
+    #part 8: summarize transactions by month - Elizabeth Diener
+    elif choice == '8':
+        transbymonth = transact.sum_month()
+        print_transactions(transbymonth)
+
+    #part 9: summarize transactions by year - Elizabeth Diener
+    elif choice == '9':
+        transbyyear = transact.sum_year()
+        print_transactions(transbyyear)
+
     #part 10: summarize transactions by category
     elif choice == '10':
         print(transact.summarize())
+
     #part 11: print menu
     elif choice == '11':
         print(menu)
+
     else:
         print("choice",choice,"not yet implemented")
 
