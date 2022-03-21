@@ -1,10 +1,12 @@
 import sqlite3
 
 def to_trans_dict(trans_tuple):
-    ''' trans is a transaction tuple (item_number, amount, category, date, description)'''
+    ''' trans is a transaction tuple
+    (item_number, amount, category, date, description)'''
     t = {'item_number':trans_tuple[0], 'amount':trans_tuple[1], 'category':trans_tuple[2], 'date':trans_tuple[3], 'desc':trans_tuple[4]}
     return t
-
+    #Can we change item_number into something shorter, 
+    # amount to amt, category to ctgry?
 def to_trans_dict_list(trans_tuples):
     ''' convert a list of category tuples into a list of dictionaries'''
     return [to_trans_dict(t) for t in trans_tuples]
@@ -15,7 +17,11 @@ class Transactions():
         con= sqlite3.connect(fileName)
         cur = con.cursor()
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions
-                (item_number INT AUTO_INCREMENT PRIMARY KEY,amount INT,category VARCHAR,date VARCHAR,desc VARCHAR)''')
+                (item_number INT AUTO_INCREMENT PRIMARY KEY,
+                amount INT,
+                category VARCHAR,
+                date VARCHAR,
+                desc VARCHAR)''')
         con.commit()
         con.close()
         self.fileName = fileName
@@ -23,16 +29,15 @@ class Transactions():
    #Part 4: To select transactions to be shown
     def select_all(self):
         ''' return all of the transactions as a list of dicts.'''
-        con= sqlite3.connect(self.fileName)
+        con = sqlite3.connect(self.fileName)
         cur = con.cursor()
         cur.execute("SELECT item_number,* from transactions")
         tuples = cur.fetchall()
         con.commit()
         con.close()
         return to_trans_dict_list(tuples)
-
-    #Part 5: To add transactions 
-    def add(self,item): 
+    #Part 5: To add transactions
+    def add(self,item):
         ''' add a transaction to the transactions table.
             this returns the item_number of the inserted element
         '''
