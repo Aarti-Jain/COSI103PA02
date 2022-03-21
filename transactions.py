@@ -45,6 +45,14 @@ class Transactions():
         con.commit()
         con.close()
         return last_item_number[0]
+    #Part 6: To delete transactions - Leora
+    '''Deletes a transaction from the transaction table'''
+    def delete(self, rowid,):
+        con = sqlite3.connect(self.fileName)
+        cur = con.cursor()
+        cur.execute("DELETE FROM transactions WHERE rowid=(?)", (rowid,))
+        con.commit()
+        con.close()
 
    #Part 10: Summarize transactions by category
     def summarize(self):

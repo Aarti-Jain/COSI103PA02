@@ -88,7 +88,10 @@ def process_choice(choice):
         transDesc =  input("transaction description: ")
         trans = {'amount':amt, 'category':transCat, 'date':date, 'desc':transDesc}
         transact.add(trans)
-        
+    #part 6: delete transaction
+    elif choice =='6':
+        rowid = input("Which id do you want to delete?") 
+        transact.delete(rowid)  
     #part 10: summarize transactions by category
     elif choice == '10':
         print(transact.summarize())
