@@ -1,10 +1,11 @@
+''''Aarti, Aarthi, Elizabeth and Leora present our code'''
 import sqlite3
 
 def to_trans_dict(trans_tuple):
     ''' trans is a transaction tuple
     (item_number, amount, category, date, description)'''
-    t = {'item_number':trans_tuple[0], 'amount':trans_tuple[1], 'category':trans_tuple[2], 'date':trans_tuple[3], 'desc':trans_tuple[4]}
-    return t
+    tdict = {'item_number':trans_tuple[0], 'amount':trans_tuple[1], 'category':trans_tuple[2], 'date':trans_tuple[3], 'desc':trans_tuple[4]}
+    return tdict
     #Can we change item_number into something shorter,
     # amount to amt, category to ctgry?
 def to_trans_dict_list(trans_tuples):
@@ -12,6 +13,7 @@ def to_trans_dict_list(trans_tuples):
     return [to_trans_dict(t) for t in trans_tuples]
 
 class Transactions():
+    '''TO DO: put in a summary of what this does'''
 
     def __init__(self,fileName):
         con= sqlite3.connect(fileName)
@@ -60,11 +62,13 @@ class Transactions():
         con.close()
     #Part 7: Summarize transactions by date
     def sum_date(self):
+        '''TO DO: add docstring summary of this'''
         con = sqlite3.connect(self.fileName)
         cur = con.cursor()
         return cur.execute("SELECT * FROM transactions ORDER BY date")
    #Part 10: Summarize transactions by category
     def summarize(self):
+        '''TO DO: add docstring summary of this'''
         con= sqlite3.connect(self.fileName)
         cur = con.cursor()
         return cur.execute("SELECT * FROM transactions ORDER BY category")
