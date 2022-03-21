@@ -77,7 +77,7 @@ class Transactions():
         """
         con = sqlite3.connect(self.fileName)
         cur = con.cursor()
-        return cur.execute("SELECT * FROM transactions ORDER BY strftime('%m', 'date')")
+        return cur.execute("SELECT * FROM transactions ORDER BY strftime('%m', 'date') DESC")
 
     #Part 9: Summarize transactions by year - Elizabeth Diener
     def sum_year(self):
@@ -89,7 +89,7 @@ class Transactions():
         """
         con = sqlite3.connect(self.fileName)
         cur = con.cursor()
-        return cur.execute("SELECT * FROM transactions ORDER BY strftime('%Y', 'date')")
+        return cur.execute("SELECT * FROM transactions ORDER BY strftime('%Y', 'date') DESC")
 
    #Part 10: Summarize transactions by category
     def summarize(self):
