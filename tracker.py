@@ -149,9 +149,11 @@ def print_transactions(items):
         print("%-10s %-10d %-10s %-10d %-30s"%values)
 
 def print_category(cat):
+    '''TO DO: write doc string'''
     print("%-3d %-10s %-30s"%(cat['rowid'],cat['name'],cat['desc']))
 
 def print_categories(cats):
+    '''TO DO: write doc string'''
     print("%-3s %-10s %-30s"%("id","name","description"))
     print('-'*45)
     for cat in cats:
