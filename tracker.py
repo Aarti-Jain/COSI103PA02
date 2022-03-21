@@ -91,7 +91,13 @@ def process_choice(choice):
     #part 6: delete transaction
     elif choice =='6':
         rowid = input("Which id do you want to delete?") 
-        transact.delete(rowid)  
+        transact.delete(rowid)
+    #part 8: summarize transactions by month
+    elif choice == '8':
+        pass
+    #part 9: summarize transactions by year
+    elif choice == '9':
+        pass
     #part 10: summarize transactions by category
     elif choice == '10':
         print(transact.summarize())

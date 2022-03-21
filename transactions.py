@@ -36,6 +36,7 @@ class Transactions():
         con.commit()
         con.close()
         return to_trans_dict_list(tuples)
+
     #Part 5: To add transactions
     def add(self,item):
         ''' add a transaction to the transactions table.
@@ -50,6 +51,7 @@ class Transactions():
         con.commit()
         con.close()
         return last_item_number[0]
+
     #Part 6: To delete transactions - Leora
     def delete(self, rowid,):
         '''Deletes a transaction from the transaction table'''
@@ -58,11 +60,37 @@ class Transactions():
         cur.execute("DELETE FROM transactions WHERE rowid=(?)", (rowid,))
         con.commit()
         con.close()
+
     #Part 7: Summarize transactions by date
     def sum_date(self):
         con = sqlite3.connect(self.fileName)
         cur = con.cursor()
         return cur.execute("SELECT * FROM transactions ORDER BY date")
+
+    #Part 8: Summarize transactions by month - Elizabeth Diener
+    def sum_month(self):
+        """_summary_
+        This method returns a list of all transaction data in the file associated with the instance of this class, ordered by month.
+
+        :return: All transactions ordered by month.
+        :rtype: list[tuple]
+        """
+        con = sqlite3.connect(self.fileName)
+        cur = con.cursor()
+        return cur.execute("SELECT * FROM transactions ORDER BY strftime('%m', 'date')")
+
+    #Part 9: Summarize transactions by year - Elizabeth Diener
+    def sum_year(self):
+        """_summary_
+        This method returns a list of all transaction data in the file associated with the instance of this class, ordered by year.
+
+        :return: All transactions ordered by year.
+        :rtype: list[tuple]
+        """
+        con = sqlite3.connect(self.fileName)
+        cur = con.cursor()
+        return cur.execute("SELECT * FROM transactions ORDER BY strftime('%Y', 'date')")
+
    #Part 10: Summarize transactions by category
     def summarize(self):
         con= sqlite3.connect(self.fileName)
