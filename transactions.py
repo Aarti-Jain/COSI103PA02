@@ -51,8 +51,8 @@ class Transactions():
         con.close()
         return last_item_number[0]
     #Part 6: To delete transactions - Leora
-    '''Deletes a transaction from the transaction table'''
     def delete(self, rowid,):
+        '''Deletes a transaction from the transaction table'''
         con = sqlite3.connect(self.fileName)
         cur = con.cursor()
         cur.execute("DELETE FROM transactions WHERE rowid=(?)", (rowid,))
