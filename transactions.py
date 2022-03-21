@@ -5,7 +5,7 @@ def to_trans_dict(trans_tuple):
     (item_number, amount, category, date, description)'''
     t = {'item_number':trans_tuple[0], 'amount':trans_tuple[1], 'category':trans_tuple[2], 'date':trans_tuple[3], 'desc':trans_tuple[4]}
     return t
-    #Can we change item_number into something shorter, 
+    #Can we change item_number into something shorter,
     # amount to amt, category to ctgry?
 def to_trans_dict_list(trans_tuples):
     ''' convert a list of category tuples into a list of dictionaries'''
@@ -61,9 +61,9 @@ class Transactions():
 
    #Part 10: Summarize transactions by category
     def summarize(self):
-       con= sqlite3.connect(self.fileName)
-       cur = con.cursor()
-       return cur.execute("SELECT * FROM transactions ORDER BY category")
+        con= sqlite3.connect(self.fileName)
+        cur = con.cursor()
+        return cur.execute("SELECT * FROM transactions ORDER BY category")
 
 
 
