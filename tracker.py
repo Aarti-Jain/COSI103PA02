@@ -60,11 +60,9 @@ def process_choice(choice):
     '''TO DO: write up docstring'''
     if choice=='0':
         return
-
     elif choice=='1':
         cats = category.select_all()
         print_categories(cats)
-
     elif choice=='2':
         name = input("category name: ")
         desc = input("category description: ")
