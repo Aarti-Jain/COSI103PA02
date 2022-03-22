@@ -91,10 +91,11 @@ def process_choice(choice):
         trans = {'amount':amt, 'category':transCat, 'date':date, 'desc':transDesc}
         transact.add(trans)
 
-    #part 6: delete transaction
+    #part 6: delete transaction - Leora Kelsey
     elif choice =='6':
         rowid = input("Which id do you want to delete?")
         transact.delete(rowid)
+    #part 7: summarize transactions by date - Leora Kelsey
     elif choice == '7':
         print_transactions(transact.sum_date()) 
 

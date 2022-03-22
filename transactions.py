@@ -46,7 +46,7 @@ class Transactions():
         ''' add a transaction to the transactions table.
             this returns the item_number of the inserted element
         '''
-        item_number = 1
+        item_number = 1 
         con= sqlite3.connect(self.fileName)
         cur = con.cursor()
         cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)",(item_number,item['amount'],item['category'],item['date'], item['desc']))
