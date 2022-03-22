@@ -28,7 +28,7 @@ class Transactions():
         con.close()
         self.fileName = fileName
 
-   #Part 4: To select transactions to be shown
+   #Part 4: To select transactions to be shown - Aarthi Sivasankar
     def select_all(self):
         ''' return all of the transactions as a list of dicts.'''
         con = sqlite3.connect(self.fileName)
@@ -39,19 +39,21 @@ class Transactions():
         con.close()
         return to_trans_dict_list(tuples)
 
-    #Part 5: To add transactions
+    #Part 5: To add transactions - Aarthi Sivasankar
     def add(self,item):
         ''' add a transaction to the transactions table.
             this returns the item_number of the inserted element
         '''
+        item_number = 0
         con= sqlite3.connect(self.fileName)
         cur = con.cursor()
-        cur.execute("INSERT INTO transactions VALUES(?,?)",(item['item_number'],item['amount'],item['category'],item['date'], item['desc']))
+        cur.execute("INSERT INTO transactions VALUES(?,?)",(item_number,item['amount'],item['category'],item['date'], item['desc']))
         con.commit()
         cur.execute("SELECT last_insert_item_number()")
         last_item_number = cur.fetchone()
         con.commit()
         con.close()
+        item_number+=1
         return last_item_number[0]
 
     #Part 6: To delete transactions - Leora
