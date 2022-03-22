@@ -149,8 +149,17 @@ def print_transactions(items):
         'item #','amount','category','date','description'))
     print('-'*40)
     for item in items:
-        values = tuple(item.values())
-        print("%-10s %-10d %-10s %-10d %-30s"%values)
+        print(item)
+    # if len(items)==0:
+    #     print('no items to print')
+    #     return
+    # print('\n')
+    # print("%-10s %-10d %-10s %-10d %-30s"%(
+    #     'item #','amount','category','date','description'))
+    # print('-'*40)
+    # for item in items:
+    #     values = tuple(item.values())
+    #     print("%-10s %-10d %-10s %-10d %-30s"%values)
 
 def print_category(cat):
     '''TO DO: write doc string'''

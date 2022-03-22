@@ -72,8 +72,8 @@ class Transactions():
         '''TO DO: add docstring summary of this'''
         con = sqlite3.connect(self.fileName)
         cur = con.cursor()
-        return cur.execute("SELECT * FROM transactions ORDER BY strftime('date) DESC")
-
+        item = cur.execute("SELECT * FROM transactions ORDER BY date")
+        return item
     #Part 8: Summarize transactions by month - Elizabeth Diener
     def sum_month(self):
         """_summary_
