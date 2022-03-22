@@ -14,7 +14,7 @@ def to_trans_dict_list(trans_tuples):
 
 class Transactions():
     '''TO DO: put in a summary of what this does'''
-
+    
     def __init__(self,fileName):
         con= sqlite3.connect(fileName)
         cur = con.cursor()
@@ -39,12 +39,14 @@ class Transactions():
         con.close()
         return to_trans_dict_list(tuples)
 
+    
     #Part 5: To add transactions - Aarthi Sivasankar
     def add(self,item):
+        global item_number 
         ''' add a transaction to the transactions table.
             this returns the item_number of the inserted element
         '''
-        item_number = 0
+        item_number = 1
         con= sqlite3.connect(self.fileName)
         cur = con.cursor()
         cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)",(item_number,item['amount'],item['category'],item['date'], item['desc']))
@@ -103,8 +105,10 @@ class Transactions():
         cur = con.cursor()
         cur.execute("SELECT category FROM transactions ORDER BY category")
         rows = cur.fetchall()
+        results = []
         for r in rows:
-            print(r)
+            results.append(r)
+        return results
 
 
 
