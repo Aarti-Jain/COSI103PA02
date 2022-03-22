@@ -108,7 +108,7 @@ def process_choice(choice):
 
     #part 10: summarize transactions by category
     elif choice == '10':
-        print(transact.summarize())
+        transact.summarize()
 
     #part 11: print menu
     elif choice == '11':

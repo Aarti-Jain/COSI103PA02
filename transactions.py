@@ -101,7 +101,10 @@ class Transactions():
         '''TO DO: add docstring summary of this'''
         con= sqlite3.connect(self.fileName)
         cur = con.cursor()
-        return cur.execute("SELECT * FROM transactions ORDER BY category")
+        cur.execute("SELECT category FROM transactions ORDER BY category")
+        rows = cur.fetchall()
+        for r in rows:
+            print(r)
 
 
 
