@@ -47,7 +47,7 @@ class Transactions():
         item_number = 0
         con= sqlite3.connect(self.fileName)
         cur = con.cursor()
-        cur.execute("INSERT INTO transactions VALUES(?,?)",(item_number,item['amount'],item['category'],item['date'], item['desc']))
+        cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)",(item_number,item['amount'],item['category'],item['date'], item['desc']))
         con.commit()
         cur.execute("SELECT last_insert_item_number()")
         last_item_number = cur.fetchone()
