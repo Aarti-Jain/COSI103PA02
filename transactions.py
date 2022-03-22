@@ -36,7 +36,7 @@ class Transactions():
         tuples = cur.fetchall()
         con.commit()
         con.close()
-        return to_trans_dict_list(tuples)
+        return tuples #to_trans_dict_list(tuples)
     #Part 5: To add transactions - Aarthi Sivasankar
     def add(self,itm):
         ''' add a transaction to the transactions table.
