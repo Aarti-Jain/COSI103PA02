@@ -95,6 +95,8 @@ def process_choice(choice):
     elif choice =='6':
         rowid = input("Which id do you want to delete?")
         transact.delete(rowid)
+    elif choice == '7':
+        print_transactions(transact.sum_date()) 
 
     #part 8: summarize transactions by month - Elizabeth Diener
     elif choice == '8':
