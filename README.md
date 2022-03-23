@@ -1,5 +1,5 @@
 # COSI103PA02
-This is the README file for COSI 103 PA 02
+This is the README file for COSI 103 PA 02. 
 This app is a finance tracker app. It allows the user to create, read, update, and delete financial transactions. 
 The user is able to pick from a menu of options, which allow the user to modify the database. 
 
