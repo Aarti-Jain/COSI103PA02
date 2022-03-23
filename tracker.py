@@ -109,13 +109,13 @@ def process_choice(choice):
         transbyyear = transact.sum_year()
         print_transactions(transbyyear)
 
-    #part 10: summarize transactions by category
+    #part 10: summarize transactions by category - Aarti Jain
     elif choice == '10':
        categories = transact.summarize()
        for c in categories:
            print(c)
 
-    #part 11: print menu
+    #part 11: print menu - Aarti Jain 
     elif choice == '11':
         print(menu)
 

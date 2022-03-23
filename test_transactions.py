@@ -1,6 +1,7 @@
 import pytest
 from transactions import Transactions, to_trans_dict
 
+#Test for part 10, summarize() - Aarti Jain
 @pytest.mark.fixture
 def testSummarize():
     trans = Transactions('tracker.db')
@@ -8,7 +9,8 @@ def testSummarize():
     assert categories[0] == ('investments',)
     assert categories[1] == ('purchases',)
 
-#Test for to_trans_dict - Aarthi Sivasankar
+
+# #Test for to_trans_dict - Aarthi Sivasankar
 @pytest.mark.simple
 def test_to_trans_dict():
     ''' teting the to_trans_dict function '''

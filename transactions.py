@@ -96,7 +96,7 @@ class Transactions():
         cur = con.cursor()
         return cur.execute("SELECT * FROM transactions ORDER BY strftime('%Y', 'date') DESC")
 
-   #Part 10: Summarize transactions by category
+   #Part 10: Summarize transactions by category - Aarti Jain 
     def summarize(self):
         '''TO DO: add docstring summary of this'''
         con= sqlite3.connect(self.file_name)
@@ -107,3 +107,5 @@ class Transactions():
         for row in rows:
             results.append(row)
         return results
+
+    #Part 11 is located in tracker.py - Aarti Jain
