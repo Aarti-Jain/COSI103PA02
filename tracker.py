@@ -85,10 +85,10 @@ def process_choice(choice):
     #part 5: add transaction
     elif choice=='5':
         amt = input("transaction amount: ")
-        transCat = input("transaction category: ")
+        trans_cat = input("transaction category: ")
         date =  input("transaction date: ")
-        transDesc =  input("transaction description: ")
-        trans = {'amount':amt, 'category':transCat, 'date':date, 'desc':transDesc}
+        trans_desc =  input("transaction description: ")
+        trans = {'amount':amt, 'category':trans_cat, 'date':date, 'desc':trans_desc}
         transact.add(trans)
 
     #part 6: delete transaction - Leora Kelsey
@@ -97,7 +97,7 @@ def process_choice(choice):
         transact.delete(rowid)
     #part 7: summarize transactions by date - Leora Kelsey
     elif choice == '7':
-        print_transactions(transact.sum_date()) 
+        print_transactions(transact.sum_date())
 
     #part 8: summarize transactions by month - Elizabeth Diener
     elif choice == '8':
@@ -111,11 +111,11 @@ def process_choice(choice):
 
     #part 10: summarize transactions by category - Aarti Jain
     elif choice == '10':
-       categories = transact.summarize()
-       for c in categories:
-           print(c)
+        categories = transact.summarize()
+        for cat in categories:
+            print(cat)
 
-    #part 11: print menu - Aarti Jain 
+    #part 11: print menu - Aarti Jain
     elif choice == '11':
         print(menu)
 
