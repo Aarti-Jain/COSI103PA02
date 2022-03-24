@@ -49,7 +49,7 @@ class Transactions():
         cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)"
         ,(itm_nm,itm['amount'],itm['category'],itm['date'], itm['desc'])) #Does the code still work?
         con.commit()
-        cur.execute("SELECT last_insert_item_number()")
+        #cur.execute("SELECT last_insert_item_number()") #This is the error. There is no function like this
         last_item_number = cur.fetchone()
         con.commit()
         con.close()
