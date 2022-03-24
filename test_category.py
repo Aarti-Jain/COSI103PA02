@@ -97,8 +97,6 @@ def test_delete(med_db):
 
     assert len(cats0)==len(cats2)
     assert len(cats2) == len(cats1)-1
-@pytest.mark.update
-
 
 @pytest.mark.update
 def test_update(med_db):
@@ -118,11 +116,3 @@ def test_update(med_db):
     cat2 = med_db.select_one(rowid)
     assert cat2['name']==cat1['name']
     assert cat2['desc']==cat1['desc']
-
-@pytest.mark.sum_month
-def test_sum_month(emptydb):
-    pass
-
-@pytest.mark.sum_year
-def test_sum_year(emptydb):
-    pass
