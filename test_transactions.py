@@ -75,4 +75,12 @@ def test_add(med_db):
     transo = med_db.select_all()
     item_number = med_db.add(trans0)
     trans1 = med_db.select_all()
-    assert len(trans1) == len(trans0) + 1   
+    assert len(trans1) == len(trans0) + 1
+
+@pytest.mark.sum_month
+def test_sum_month(small_db):
+    pass
+
+@pytest.mark.sum_year
+def test_sum_year(small_db):
+    pass   
