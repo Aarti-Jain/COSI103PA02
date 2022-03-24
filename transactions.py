@@ -56,7 +56,7 @@ class Transactions():
         itm_nm+=1
         return last_item_number[0]
 
-    #Part 6: To delete transactions - Leora
+    #Part 6: To delete transactions - Leora Kelsey
     def delete(self, rowid,):
         '''Deletes a transaction from the transaction table'''
         con = sqlite3.connect(self.file_name)
@@ -65,7 +65,7 @@ class Transactions():
         con.commit()
         con.close()
 
-    #Part 7: Summarize transactions by date
+    #Part 7: Summarize transactions by date - Leora Kelsey
     def sum_date(self):
         '''TO DO: add docstring summary of this'''
         con = sqlite3.connect(self.file_name)
@@ -96,7 +96,7 @@ class Transactions():
         cur = con.cursor()
         return cur.execute("SELECT * FROM transactions ORDER BY strftime('%Y', 'date') DESC")
 
-   #Part 10: Summarize transactions by category - Aarti Jain 
+   #Part 10: Summarize transactions by category - Aarti Jain
     def summarize(self):
         '''TO DO: add docstring summary of this'''
         con= sqlite3.connect(self.file_name)
