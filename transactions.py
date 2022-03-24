@@ -13,7 +13,7 @@ def to_trans_dict_list(trans_tuples):
     return [to_trans_dict(t) for t in trans_tuples]
 
 class Transactions():
-    '''TO DO: put in a summary of what this does'''
+    '''TO DO: deals with transactions'''
     def __init__(self,file_name):
         con= sqlite3.connect(file_name)
         cur = con.cursor()
