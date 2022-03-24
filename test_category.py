@@ -78,14 +78,16 @@ def test_add(med_db):
     assert cat1['desc']==cat0['desc']
 
 
-@pytest.mark.delete_leora
+@pytest.mark.delete
 def test_delete(med_db):
     ''' add a category to db, delete it, and see that the size changes'''
     # first we get the initial table
     cats0 = med_db.select_all()
 
     # then we add this category to the table and get the new list of rows
-    cat0 = {'amount':'700','category':'purchases','date':'1/1/2022','desc':'Happy New Year Bonus'}
+    cat0 = {'name':'testing_add',
+            'desc':'see if it works',
+            }
     rowid = med_db.add(cat0)
     cats1 = med_db.select_all()
 
@@ -114,3 +116,11 @@ def test_update(med_db):
     cat2 = med_db.select_one(rowid)
     assert cat2['name']==cat1['name']
     assert cat2['desc']==cat1['desc']
+
+@pytest.mark.sum_month
+def test_sum_month(emptydb):
+    pass
+
+@pytest.mark.sum_year
+def test_sum_year(emptydb):
+    pass
