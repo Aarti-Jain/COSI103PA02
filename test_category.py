@@ -78,16 +78,13 @@ def test_add(med_db):
     assert cat1['desc']==cat0['desc']
 
 
-@pytest.mark.delete
+@pytest.mark.delete_leora
 def test_delete(med_db):
     ''' add a category to db, delete it, and see that the size changes'''
     # first we get the initial table
     cats0 = med_db.select_all()
 
     # then we add this category to the table and get the new list of rows
-    cat0 = {'name':'testing_add',
-            'desc':'see if it works',
-            }
     rowid = med_db.add(cat0)
     cats1 = med_db.select_all()
 
