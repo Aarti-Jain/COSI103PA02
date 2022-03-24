@@ -84,7 +84,7 @@ def test_delete(med_db):
     cats0 = med_db.select_all()
 
     # then we add this category to the table and get the new list of rows
-    cat0 = {'amount':'700',
+    cat0 = {'amount':700,
             'category':'see if it works',
             'date': '1/1/2022',
             'desc': 'Happy New Year Bonus',
