@@ -76,6 +76,28 @@ def test_add(med_db):
     item_number = med_db.add(trans0)
     trans1 = med_db.select_all()
     assert len(trans1) == len(trans0) + 1
+#Test for Delete - Leora Kelsey
+@pytest.mark.delete
+def test_delete(med_db):
+    ''' add a category to db, delete it, and see that the size changes'''
+    # first we get the initial table
+    cats0 = med_db.select_all()
+
+    # then we add this category to the table and get the new list of rows
+    cat0 = {'amount':'700',
+            'category':'see if it works',
+            'date': '1/1/2022',
+            'desc': 'Happy New Year Bonus',
+            }
+    rowid = med_db.add(cat0)
+    cats1 = med_db.select_all()
+
+    # now we delete the category and again get the new list of rows
+    med_db.delete(rowid)
+    cats2 = med_db.select_all()
+
+    assert len(cats0)==len(cats2)
+    assert len(cats2) == len(cats1)-1
 
 @pytest.mark.sum_month
 def test_sum_month(small_db):
