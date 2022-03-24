@@ -97,6 +97,8 @@ def test_delete(med_db):
 
     assert len(cats0)==len(cats2)
     assert len(cats2) == len(cats1)-1
+@pytest.mark.update
+
 
 @pytest.mark.update
 def test_update(med_db):
