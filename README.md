@@ -27,6 +27,6 @@ Here are the actual commands I used:
     /Users/lkelsey/Library/Python/3.9/bin/pylint tracker.py
     /Users/lkelsey/Library/Python/3.9/bin/pylint transactions.py
     /Users/lkelsey/Library/Python/3.9/bin/pylint test_transactions.py
-    python tracker.py #I implemented menu options 6 and 7 from part 5 of the assignment (plus did a fair bit of linting)
+    python tracker.py #I implemented menu options 6 and 7 from part 5 of the assignment 
     /Users/lkelsey/Library/Python/3.9/bin/pytest
 ```
