@@ -23,10 +23,10 @@ Here is the script file, created using the terminal:
 [LeoraKelseyPA02Script.txt](https://github.com/Aarti-Jain/COSI103PA02/files/8346922/LeoraKelseyPA02Script.txt)
 
 Here are the actual commands I used:
-''' cd COSI103PA02
+``` cd COSI103PA02
     /Users/lkelsey/Library/Python/3.9/bin/pylint tracker.py
     /Users/lkelsey/Library/Python/3.9/bin/pylint transactions.py
     /Users/lkelsey/Library/Python/3.9/bin/pylint test_transactions.py
     python tracker.py #I implemented menu options 6 and 7 from part 5 of the assignment (plus did a fair bit of linting)
     /Users/lkelsey/Library/Python/3.9/bin/pytest
-'''
+```
