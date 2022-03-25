@@ -41,7 +41,7 @@ category = Category('tracker.db')
 
 # here is the menu for the tracker app
 
-menu = '''
+MENU = '''
 0. quit
 1. show categories
 2. add category
@@ -117,7 +117,7 @@ def process_choice(choice):
 
     #part 11: print menu - Aarti Jain
     elif choice == '11':
-        print(menu)
+        print(MENU)
 
     else:
         print("choice",choice,"not yet implemented")
@@ -130,7 +130,7 @@ def toplevel():
     ''' handle the user's choice '''
 
     ''' read the command args and process them'''
-    print(menu)
+    print(MENU)
     choice = input("> ")
     while choice !='0' :
         choice = process_choice(choice)
@@ -144,7 +144,6 @@ def print_transactions(items):
     ''' print the transactions '''
     for item in items:
         print(item)
-    
 
 def print_category(cat):
     '''TO DO: write doc string'''
