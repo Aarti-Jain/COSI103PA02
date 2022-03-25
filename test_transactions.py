@@ -212,7 +212,7 @@ def test_sum_date(empty_db):
 @pytest.mark.sum_month
 def test_sum_month(empty_db):
     """_summary_
-    This pytest will test whether the function sum_month returns items sorted by the month aspect of the date.
+    This pytest will test whether the function sum_month returns items sorted by ONLY the month aspect of the date.
     """
     # Create three categories
     cat0 = {'amount':700, 'category':'testing', 'date': '06/01/2002', 'desc': 'Whatever',}
