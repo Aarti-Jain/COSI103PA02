@@ -5,7 +5,9 @@ The user is able to pick from a menu of options, which allow the user to modify 
 
 <Aarti Jain's scripts>
 Here is the script file, created using the terminal:
-[AartiJainPA02Script.txt](https://github.com/Aarti-Jain/COSI103PA02/files/8333384/AartiJainPA02Script.txt)
+[AartiJainPA02Script.txt](https://github.com/Aarti-Jain/COSI103PA02/files/8346802/AartiJainPA02Script.txt)
+
+
 However, here are the actual commands:
 ``` cd desktop
     cd COSI103PA02
