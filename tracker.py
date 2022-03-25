@@ -93,7 +93,7 @@ def process_choice(choice):
 
     #part 6: delete transaction - Leora Kelsey
     elif choice =='6':
-        rowid = input("Which id do you want to delete?")
+        rowid = input("rowid: ")
         transact.delete(rowid)
     #part 7: summarize transactions by date - Leora Kelsey
     elif choice == '7':
@@ -144,6 +144,7 @@ def print_transactions(items):
     ''' print the transactions '''
     for item in items:
         print(item)
+    
 
 def print_category(cat):
     '''TO DO: write doc string'''

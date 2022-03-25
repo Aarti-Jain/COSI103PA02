@@ -55,7 +55,7 @@ def med_db(small_db):
     # add 10 transactions
     for i in range(10):
         s = str(i)
-        trans ={'amount':0+s, 'category':'category'+s, 'date': 'date'+s, 'desc':'description '+s,
+        trans ={'amount':0+int(s), 'category':'category'+s, 'date': 'date'+s, 'desc':'description '+s,
                 }
         item_number = small_db.add(trans)
         itemnumbers.append(item_number)
@@ -75,30 +75,110 @@ def test_add(med_db):
     transo = med_db.select_all()
     item_number = med_db.add(trans0)
     trans1 = med_db.select_all()
-    assert len(trans1) == len(trans0) + 1
+    assert len(trans1) == len(transo) + 1
 #Test for Delete - Leora Kelsey
 @pytest.mark.delete
-def test_delete(med_db):
+def test_delete(empty_db):
     ''' add a category to db, delete it, and see that the size changes'''
     # first we get the initial table
-    cats0 = med_db.select_all()
 
-    # then we add this category to the table and get the new list of rows
+    assert len(empty_db.select_all()) == 0
+    cats0 = empty_db.select_all()
+    assert len(cats0) == 0
     cat0 = {'amount':700,
             'category':'see if it works',
-            'date': '1/1/2022',
+            'date': '1/1/22',
             'desc': 'Happy New Year Bonus',
             }
-    rowid = med_db.add(cat0)
+    cat1 = {'amount':600,
+            'category':'take2',
+            'date': '1/2/22',
+            'desc': 'new bonus',
+            }
+    empty_db.add(cat0)
+    cats1 = empty_db.select_all()
+    assert len(cats1) == 1
+    empty_db.add(cat1)
+    cats2 = empty_db.select_all()
+    assert len(cats2) == 2
+    empty_db.delete(2)
+    cats3 = empty_db.select_all()
+    assert len(cats3) == 1
+    empty_db.delete(1)
+    cats4 = empty_db.select_all()
+    assert len(cats4) == 0
+#Test for Delete - Leora Kelsey
+@pytest.mark.delete
+def test_delete2(med_db):
+    ''' add a category to db, delete it, and see that the size changes'''
+    # first we get the initial table
+
+    #assert len(med_db.select_all()) == 0
+    cats0 = med_db.select_all()
+    #assert len(cats0) == 0
+    cat0 = {'amount':700,
+            'category':'see if it works',
+            'date': '1/1/22',
+            'desc': 'Happy New Year Bonus',
+            }
+    cat1 = {'amount':600,
+            'category':'take2',
+            'date': '1/2/22',
+            'desc': 'new bonus',
+            }
+    med_db.add(cat0)
     cats1 = med_db.select_all()
-
-    # now we delete the category and again get the new list of rows
-    med_db.delete(rowid)
+    assert len(cats1) == len(cats0)+1
+    med_db.add(cat1)
     cats2 = med_db.select_all()
-
-    assert len(cats0)==len(cats2)
-    assert len(cats2) == len(cats1)-1
-
+    assert len(cats2) == len(cats1) +1
+    assert len(cats2) == len(cats0) +2
+    med_db.delete(2)
+    cats3 = med_db.select_all()
+    assert len(cats3) == len(cats1)
+    med_db.delete(1)
+    cats4 = med_db.select_all()
+    assert len(cats4) == len(cats0)
+@pytest.mark.sum_date
+def test_sum_date(empty_db):
+    '''tests whether the items are printed out in the proper order'''
+    cat0 = {'amount':700,
+            'category':'see if it works',
+            'date': '1/1/22',
+            'desc': 'Happy New Year Bonus',
+            }
+    cat1 = {'amount':700,
+            'category':'see if it works',
+            'date': '1/3/22',
+            'desc': 'Happy New Year Bonus',
+            }
+    cat2 = {'amount':700,
+            'category':'see if it works',
+            'date': '1/2/22',
+            'desc': 'Happy New Year Bonus',
+            }
+    empty_db.add(cat0)
+    empty_db.add(cat1)
+    empty_db.add(cat2)
+    items = empty_db.sum_date()
+    num = 0
+    for item in items:
+        num += 1
+        if num == 1:
+            assert item[2] == '1/1/22'
+        if num == 2:
+            assert item[2] == '1/2/22'
+        if num == 3:
+            assert item[2] == '1/3/22'
+    items2 = empty_db.select_all()
+    for item in items2:
+        num += 1
+        if num == 1:
+            assert item[2] == '1/1/22'
+        if num == 2:
+            assert item[2] == '1/3/22'
+        if num == 3:
+            assert item[2] == '1/2/22'
 @pytest.mark.sum_month
 def test_sum_month(small_db):
     pass
