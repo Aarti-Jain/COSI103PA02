@@ -17,9 +17,9 @@ class Transactions():
     def __init__(self,file_name):
         con= sqlite3.connect(file_name)
         cur = con.cursor()
+        #cur.execute('''DROP TABLE IF EXISTS transactions''')
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions
-                (item_number INT AUTO_INCREMENT PRIMARY KEY,
-                amount INT,
+                (amount INT,
                 category VARCHAR,
                 date VARCHAR,
                 desc VARCHAR)''')
@@ -32,7 +32,7 @@ class Transactions():
         ''' return all of the transactions as a list of dicts.'''
         con = sqlite3.connect(self.file_name)
         cur = con.cursor()
-        cur.execute("SELECT item_number,* from transactions")
+        cur.execute("SELECT rowid,* from transactions")
         tuples = cur.fetchall()
         con.commit()
         con.close()
@@ -44,20 +44,16 @@ class Transactions():
         '''
         con= sqlite3.connect(self.file_name)
         cur = con.cursor()
-        items = cur.fetchall()
-        num = len(items)
-        print(num)
         #for item in items:
         #    num+=1
-        cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)"
-        ,(num,itm['amount'],itm['category'],itm['date'], itm['desc'])) #Does the code still work?
+        cur.execute("INSERT INTO transactions VALUES(?,?,?,?)"
+        ,(itm['amount'],itm['category'],itm['date'], itm['desc'])) #Does the code still work?
         con.commit()
-        #cur.execute("SELECT last_insert_item_number()") #This is the error. There is no function like this
-        #last_item_number = cur.fetchone()
+        cur.execute("SELECT last_insert_rowid()")
+        last_rowid = cur.fetchone()
         con.commit()
         con.close()
-        
-        return num
+        return last_rowid[0]
 
     #Part 6: To delete transactions - Leora Kelsey
     def delete(self, rowid,):
