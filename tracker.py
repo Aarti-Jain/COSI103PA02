@@ -144,6 +144,7 @@ def print_transactions(items):
     ''' print the transactions '''
     for item in items:
         print(item)
+    
 
 def print_category(cat):
     '''TO DO: write doc string'''

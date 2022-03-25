@@ -78,27 +78,53 @@ def test_add(med_db):
     assert len(trans1) == len(trans0) + 1
 #Test for Delete - Leora Kelsey
 @pytest.mark.delete
-def test_delete(med_db):
+def test_delete(empty_db):
     ''' add a category to db, delete it, and see that the size changes'''
     # first we get the initial table
-    cats0 = med_db.select_all()
 
-    # then we add this category to the table and get the new list of rows
+    assert len(empty_db.select_all()) == 0
+    cats0 = empty_db.select_all()
+    assert len(cats0) == 0
     cat0 = {'amount':700,
             'category':'see if it works',
-            'date': '1/1/2022',
+            'date': '1/1/22',
             'desc': 'Happy New Year Bonus',
             }
-    rowid = med_db.add(cat0)
-    cats1 = med_db.select_all()
+    cat1 = {'amount':600,
+            'category':'take2',
+            'date': '1/2/22',
+            'desc': 'new bonus',
+            }
+    empty_db.add(cat0)
+    cats1 = empty_db.select_all()
+    assert len(cats1) == 1
+    # empty_db.add(cat1)
+    # cats2 = empty_db.select_all()
+    # assert len(cats2) == 2
+    # empty_db.delete(2)
+    # cats3 = empty_db.select_all()
+    # assert len(cats3) == 1
+    empty_db.delete(1)
+    cats4 = empty_db.select_all()
+    assert len(cats4) == 0
 
-    # now we delete the category and again get the new list of rows
-    med_db.delete(rowid)
-    cats2 = med_db.select_all()
+    # cat0 = {'amount':700,
+    #         'category':'see if it works',
+    #         'date': '1/1/2022',
+    #         'desc': 'Happy New Year Bonus',
+    #         }
+    # empty_db.add(cat0)
+    # cats1 = empty_db.fetchall()
+    # # now we delete the category and again get the new list of rows
+    # empty_db.delete(1)
+    # cats2 = empty_db.fetchall()
 
-    assert len(cats0)==len(cats2)
-    assert len(cats2) == len(cats1)-1
-
+    # assert len(cats0)==0
+    # assert len(cats1) == 1
+    # assert len(cats2) == 0
+@pytest.mark.sum_date
+def test_sum_date(empty_db):
+    pass
 @pytest.mark.sum_month
 def test_sum_month(small_db):
     pass

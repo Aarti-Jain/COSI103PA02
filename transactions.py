@@ -42,19 +42,22 @@ class Transactions():
         ''' add a transaction to the transactions table.
             this returns the item_number of the inserted element
         '''
-        global itm_nm #This isn't fully declared and should be named with capitals
-        itm_nm = 1
         con= sqlite3.connect(self.file_name)
         cur = con.cursor()
+        items = cur.fetchall()
+        num = len(items)
+        print(num)
+        #for item in items:
+        #    num+=1
         cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)"
-        ,(itm_nm,itm['amount'],itm['category'],itm['date'], itm['desc'])) #Does the code still work?
+        ,(num,itm['amount'],itm['category'],itm['date'], itm['desc'])) #Does the code still work?
         con.commit()
         #cur.execute("SELECT last_insert_item_number()") #This is the error. There is no function like this
-        last_item_number = cur.fetchone()
+        #last_item_number = cur.fetchone()
         con.commit()
         con.close()
-        itm_nm+=1
-        return last_item_number[0]
+        
+        return num
 
     #Part 6: To delete transactions - Leora Kelsey
     def delete(self, rowid,):
