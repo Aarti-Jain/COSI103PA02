@@ -209,6 +209,7 @@ def test_sum_date(empty_db):
             assert item[3] == '06/01/2002'
 
 
+# Part 8 - Elizabeth Diener
 @pytest.mark.sum_month
 def test_sum_month(empty_db):
     """_summary_
@@ -237,9 +238,7 @@ def test_sum_month(empty_db):
             assert item[3] == '11/03/2000'
     
 
-
-
-
+# Part 9 - Elizabeth Diener
 @pytest.mark.sum_year
 def test_sum_year(empty_db):
     """_summary_
