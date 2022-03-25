@@ -79,12 +79,13 @@ def test_add(med_db):
 #Test for Delete - Leora Kelsey
 @pytest.mark.delete
 def test_delete(empty_db):
-    ''' add a category to db, delete it, and see that the size changes'''
-    # first we get the initial table
-
+    '''A simple test to see if delete deletes as expected'''
+    # first we test if the db is empty as expected
     assert len(empty_db.select_all()) == 0
     cats0 = empty_db.select_all()
+    #this was a test bc it wasn't working before
     assert len(cats0) == 0
+    #These are what are getting to the db
     cat0 = {'amount':700,
             'category':'see if it works',
             'date': '1/1/22',
@@ -95,27 +96,31 @@ def test_delete(empty_db):
             'date': '1/2/22',
             'desc': 'new bonus',
             }
+    #adding the first
     empty_db.add(cat0)
     cats1 = empty_db.select_all()
+    #asserting correct length
     assert len(cats1) == 1
     empty_db.add(cat1)
     cats2 = empty_db.select_all()
+    #again, asserting correct length
     assert len(cats2) == 2
+    #starting deletion
     empty_db.delete(2)
     cats3 = empty_db.select_all()
+    #now that we've deleted, time to test the size
     assert len(cats3) == 1
     empty_db.delete(1)
     cats4 = empty_db.select_all()
+    #asserting now that we've manually deleted both of them,
+    # that the size is correct
     assert len(cats4) == 0
 #Test for Delete - Leora Kelsey
 @pytest.mark.delete
 def test_delete2(med_db):
     ''' add a category to db, delete it, and see that the size changes'''
-    # first we get the initial table
-
-    #assert len(med_db.select_all()) == 0
+   #I created an extra test because I wanted a more complicated version
     cats0 = med_db.select_all()
-    #assert len(cats0) == 0
     cat0 = {'amount':700,
             'category':'see if it works',
             'date': '1/1/22',
@@ -128,30 +133,38 @@ def test_delete2(med_db):
             }
     med_db.add(cat0)
     cats1 = med_db.select_all()
+    #asserting size is right
     assert len(cats1) == len(cats0)+1
     med_db.add(cat1)
     cats2 = med_db.select_all()
+    #asserting size is right again
     assert len(cats2) == len(cats1) +1
     assert len(cats2) == len(cats0) +2
     med_db.delete(2)
     cats3 = med_db.select_all()
+    #cats3 is after 2 additions and 1 deletion, cats1 is 1 additions
+    #they should be the same size
     assert len(cats3) == len(cats1)
     med_db.delete(1)
     cats4 = med_db.select_all()
+    #checking that its the same size as the start, cats0
     assert len(cats4) == len(cats0)
 @pytest.mark.sum_date
 def test_sum_date(empty_db):
     '''tests whether the items are printed out in the proper order'''
+    #1- chronology
     cat0 = {'amount':700,
             'category':'see if it works',
             'date': '1/1/22',
             'desc': 'Happy New Year Bonus',
             }
+    #3 chronology
     cat1 = {'amount':700,
             'category':'see if it works',
             'date': '1/3/22',
             'desc': 'Happy New Year Bonus',
             }
+    #2 chronology
     cat2 = {'amount':700,
             'category':'see if it works',
             'date': '1/2/22',
@@ -160,6 +173,7 @@ def test_sum_date(empty_db):
     empty_db.add(cat0)
     empty_db.add(cat1)
     empty_db.add(cat2)
+    #orders them via date
     items = empty_db.sum_date()
     num = 0
     for item in items:
@@ -170,6 +184,7 @@ def test_sum_date(empty_db):
             assert item[2] == '1/2/22'
         if num == 3:
             assert item[2] == '1/3/22'
+    #the default order
     items2 = empty_db.select_all()
     for item in items2:
         num += 1
