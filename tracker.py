@@ -58,9 +58,8 @@ MENU = '''
 
 def process_choice(choice):
     '''TO DO: write up docstring'''
-    choices = input("> ")
     if choice=='0':
-        choices = '0'
+        return
     elif choice=='1':
         cats = category.select_all()
         print_categories(cats)
@@ -123,7 +122,7 @@ def process_choice(choice):
     else:
         print("choice",choice,"not yet implemented")
 
-    choice = choices
+    choice = input("> ")
     return choice
 
 
