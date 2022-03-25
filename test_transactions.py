@@ -1,9 +1,11 @@
+'''TO DO: This is our tests'''
 import pytest
 from transactions import Transactions, to_trans_dict
 
 #Test for part 10, summarize() - Aarti Jain
 @pytest.mark.fixture
-def testSummarize():
+def test_summarize():
+    '''Hark! A test!'''
     trans = Transactions('tracker.db')
     categories = trans.summarize()
     assert categories[0] == ('investments',)
@@ -14,13 +16,13 @@ def testSummarize():
 @pytest.mark.simple
 def test_to_trans_dict():
     ''' teting the to_trans_dict function '''
-    a = to_trans_dict((6,100,'testtranscategory', 'testtransdate', 'testtransdesc'))
-    assert a['item_number']==6
-    assert a['amount']==100
-    assert a['category']=='testtranscategory'
-    assert a['date']=='testtransdate'
-    assert a['desc']=='testtransdesc'
-    assert len(a.keys())==5
+    dic = to_trans_dict((6,100,'testtranscategory', 'testtransdate', 'testtransdesc'))
+    assert dic['item_number']==6
+    assert dic['amount']==100
+    assert dic['category']=='testtranscategory'
+    assert dic['date']=='testtransdate'
+    assert dic['desc']=='testtransdesc'
+    assert len(dic.keys())==5
 
 @pytest.fixture
 def dbfile(tmpdir):
@@ -30,8 +32,8 @@ def dbfile(tmpdir):
 @pytest.fixture
 def empty_db(dbfile):
     ''' create an empty database '''
-    db = Transactions(dbfile)
-    yield db
+    dbs = Transactions(dbfile)
+    yield dbs
 
 
 @pytest.fixture
@@ -54,8 +56,9 @@ def med_db(small_db):
     itemnumbers=[]
     # add 10 transactions
     for i in range(10):
-        s = str(i)
-        trans ={'amount':0+int(s), 'category':'category'+s, 'date': 'date'+s, 'desc':'description '+s,
+        sums = str(i)
+        trans ={'amount':0+int(sums),
+        'category':'category'+sums, 'date': 'date'+sums, 'desc':'description '+sums,
                 }
         item_number = small_db.add(trans)
         itemnumbers.append(item_number)
@@ -196,8 +199,10 @@ def test_sum_date(empty_db):
             assert item[2] == '1/2/22'
 @pytest.mark.sum_month
 def test_sum_month(small_db):
+    '''To Do: add documentation'''
     pass
 
 @pytest.mark.sum_year
 def test_sum_year(small_db):
-    pass   
+    '''To Do: add documentation'''
+    pass
