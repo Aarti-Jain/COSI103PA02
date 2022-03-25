@@ -8,8 +8,8 @@ def test_summarize():
     '''Hark! A test!'''
     trans = Transactions('tracker.db')
     categories = trans.summarize()
-    assert categories[0] == ('investments',)
-    assert categories[1] == ('purchases',)
+    assert categories[0] == ('purchases',)
+   
 
 
 # #Test for to_trans_dict - Aarthi Sivasankar
