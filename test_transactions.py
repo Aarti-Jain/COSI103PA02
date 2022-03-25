@@ -84,7 +84,7 @@ def test_add(med_db):
     assert len(trans1) == len(transo) + 1
 
 
-#Test for Delete - Leora Kelsey
+#Part 6: Test for Delete - Leora Kelsey
 @pytest.mark.delete
 def test_delete(empty_db):
     '''A simple test to see if delete deletes as expected'''
@@ -125,7 +125,7 @@ def test_delete(empty_db):
     assert len(cats4) == 0
 
 
-#Test for Delete - Leora Kelsey
+#Part 6: Test for Delete - Leora Kelsey
 @pytest.mark.delete
 def test_delete2(med_db):
     ''' add a category to db, delete it, and see that the size changes'''
@@ -161,6 +161,7 @@ def test_delete2(med_db):
     assert len(cats4) == len(cats0)
 
 
+#Part 7: Test for Sum_Date - Leora Kelsey
 @pytest.mark.sum_date
 def test_sum_date(empty_db):
     '''tests whether the items are printed out in the proper order'''
@@ -209,7 +210,7 @@ def test_sum_date(empty_db):
             assert item[3] == '06/01/2002'
 
 
-# Part 8 - Elizabeth Diener
+# Part 8: Test for Sum_Month - Elizabeth Diener
 @pytest.mark.sum_month
 def test_sum_month(empty_db):
     """_summary_
@@ -238,7 +239,7 @@ def test_sum_month(empty_db):
             assert item[3] == '11/03/2000'
     
 
-# Part 9 - Elizabeth Diener
+# Part 9: Test for Sum_Year - Elizabeth Diener
 @pytest.mark.sum_year
 def test_sum_year(empty_db):
     """_summary_
