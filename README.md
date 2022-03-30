@@ -45,4 +45,16 @@ Some commands I used are:
   pytest test_transactions.py
   python tracker.py #I implemented show transactions (choice 4) and adding a transaction (choice 5)
   
-```  
+``` 
+
+<Elizabeth Diener's scripts>
+Here is the script file, created using the terminal:
+[ElizabethDienerPA02Script.txt](https://github.com/Aarti-Jain/COSI103PA02/files/8382814/ElizabethDienerPA02Script.txt)
+
+These are the commands I used:
+```
+  pylint tracker.py
+  pylint transactions.py
+  pylint test_transactions.py
+  pytest test_transactions.py
+```
